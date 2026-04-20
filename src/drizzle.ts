@@ -10,6 +10,7 @@ import type {
 import type { IndexColumn, PgTable, PgTransaction } from 'drizzle-orm/pg-core'
 import type { PgliteDatabase } from 'drizzle-orm/pglite'
 import type { PgliteUtils } from './utils'
+import { BasicIndex } from '@tanstack/db'
 import { eq, inArray } from 'drizzle-orm'
 import { createSelectSchema } from 'drizzle-zod'
 
@@ -147,6 +148,7 @@ export function drizzleCollectionOptions<
   return {
     startSync: true,
     autoIndex: 'eager',
+    defaultIndexType: BasicIndex,
     sync: {
       sync: (params) => {
         resolveSyncParams(params as SyncParamsType)

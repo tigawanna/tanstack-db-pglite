@@ -1,15 +1,12 @@
 import type { PGlite, Transaction } from '@electric-sql/pglite'
 import type { PGliteWorker } from '@electric-sql/pglite/worker'
 import type { StandardSchemaV1 } from '@standard-schema/spec'
-import type {
-  CollectionConfig,
-  DeleteMutationFnParams,
-  InsertMutationFnParams,
-  PendingMutation,
-  SyncConfig,
-  UpdateMutationFnParams,
-} from '@tanstack/db'
+import type { CollectionConfig, DeleteMutationFnParams, InsertMutationFnParams, PendingMutation, SyncConfig, UpdateMutationFnParams } from '@tanstack/db'
 import type { PgliteUtils } from './utils'
+import {
+  BasicIndex,
+
+} from '@tanstack/db'
 
 function quoteId(name: string) {
   // eslint-disable-next-line e18e/prefer-static-regex
@@ -141,6 +138,7 @@ export function sqlCollectionOptions<
   return {
     startSync,
     autoIndex: 'eager',
+    defaultIndexType: BasicIndex,
     sync: {
       sync: (params) => {
         resolveSyncParams(params as SyncParamsType)
