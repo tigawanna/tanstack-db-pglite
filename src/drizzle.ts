@@ -146,6 +146,7 @@ export function drizzleCollectionOptions<
 
   return {
     startSync: true,
+    autoIndex: 'eager',
     sync: {
       sync: (params) => {
         resolveSyncParams(params as SyncParamsType)

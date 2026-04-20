@@ -140,6 +140,7 @@ export function sqlCollectionOptions<
 
   return {
     startSync,
+    autoIndex: 'eager',
     sync: {
       sync: (params) => {
         resolveSyncParams(params as SyncParamsType)
